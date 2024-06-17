@@ -1,0 +1,26 @@
+{
+	"name": "api_fastify_prisma_postgres",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "tsc && node ./dist/server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.14.2",
+		"prisma": "^5.15.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"@prisma/client": "^5.15.0",
+		"fastify": "^4.28.0",
+		"fastify-zod": "^1.4.0",
+		"ts-node-dev": "^2.0.0",
+		"zod": "^3.23.8",
+		"zod-to-json-schema": "^3.23.1"
+	}
+}
