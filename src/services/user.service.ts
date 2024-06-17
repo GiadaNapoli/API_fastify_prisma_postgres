@@ -4,9 +4,6 @@ export const prisma = new PrismaClient();
 
 export async function createUser(user: CreateUserInput) {
 	return await prisma.user.create({
-		data: {
-			name: user.name,
-			email: user.email,
-		},
+		data: user,
 	});
 }

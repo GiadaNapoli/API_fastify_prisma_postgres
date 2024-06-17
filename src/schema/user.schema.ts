@@ -1,7 +1,6 @@
 import { z } from "zod";
-import { buildJsonSchemas } from "fastify-zod";
 
-const userCore = {
+export const userCore = {
 	name: z.string(),
 	email: z
 		.string({
@@ -9,18 +8,21 @@ const userCore = {
 			invalid_type_error: "Email must be a string",
 		})
 		.email(),
+	post: z.array(
+		z.object({
+			title: z.string(),
+			body: z.string(),
+			authorId: z.string(),
+		})
+	),
 };
 
-const createUserSchema = z.object({
+export const createUserSchema = z.object({
 	...userCore,
 });
-const createUserResponseSchema = z.object({
+export const createUserResponseSchema = z.object({
 	id: z.string(),
 	...userCore,
 });
 export type CreateUserInput = z.infer<typeof createUserSchema>;
-
-export const { schemas: userSchemas, $ref } = buildJsonSchemas({
-	createUserSchema,
-	createUserResponseSchema,
-});
+export const ZOptionalUsertSchema = createUserSchema.partial();
