@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest, FastifyInstance } from "fastify";
 import { CreateUserInput } from "../schema/user.schema";
-import { createUser } from "../services/user.service";
-import { DuplicateEntryError } from "../error/error";
+import { createUser, deleteUser } from "../services/user.service";
+import { DuplicateEntryError, InvalidEntryError } from "../error/error";
 
 export async function registerUserHandler(
 	req: FastifyRequest<{
@@ -16,6 +16,24 @@ export async function registerUserHandler(
 	} catch (error) {
 		if (error instanceof DuplicateEntryError) {
 			reply.code(409).send({ error: "Email already exists" });
+		} else {
+			reply.code(500).send({ error: "Internal Server Error" });
+		}
+	}
+}
+export async function deleteUserHandler(
+	req: FastifyRequest<{
+		Params: { id: string };
+	}>,
+	reply: FastifyReply
+) {
+	try {
+		const { id } = req.params;
+		await deleteUser(id);
+		return "user deleted";
+	} catch (error) {
+		if (error instanceof InvalidEntryError) {
+			reply.code(404).send({ error: "User not found" });
 		} else {
 			reply.code(500).send({ error: "Internal Server Error" });
 		}

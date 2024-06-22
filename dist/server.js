@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fastify = void 0;
+exports.ciao = exports.fastify = void 0;
 const fastify_1 = __importDefault(require("fastify"));
 const user_rout_1 = require("./routes/user.rout");
 const pugin_1 = require("./plugin/pugin");
@@ -12,6 +12,7 @@ exports.fastify = (0, fastify_1.default)({
     logger: true,
 });
 const PORT = 3000;
+exports.ciao = "ciaociao";
 // (async () => {
 // 	try {
 // 		await prisma.$connect(); // Attempt connection

@@ -1,6 +1,5 @@
 import Fastify from "fastify";
 import { userRoutes } from "./routes/user.rout";
-import { prisma } from "./services/user.service";
 import { zodPlugin } from "./plugin/pugin";
 import { sensiblePlugin } from "./plugin/sensible";
 
@@ -8,6 +7,7 @@ export const fastify = Fastify({
 	logger: true,
 });
 const PORT = 3000;
+export const ciao = "ciaociao";
 
 // (async () => {
 // 	try {

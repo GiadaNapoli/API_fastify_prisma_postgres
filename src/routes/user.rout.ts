@@ -5,6 +5,7 @@ import {
 	createUserSchema,
 } from "../schema/user.schema";
 import fastify, { FastifyInstance } from "fastify";
+import { validateSchema } from "../middlware/validator.shema";
 
 export const userRoutes = async (fastify: FastifyInstance) => {
 	fastify.post("/user", {
@@ -15,5 +16,16 @@ export const userRoutes = async (fastify: FastifyInstance) => {
 			},
 		},
 		handler: registerUserHandler,
+	});
+	fastify.delete('/users',{
+		schema:{
+			params:z.object({
+				id:z.string(),
+			}),
+			response:{
+				200: z.string(),
+			},
+		},
+		handler: deleteUserHandler;
 	});
 };

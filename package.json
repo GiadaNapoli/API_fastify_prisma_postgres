@@ -29,6 +29,7 @@
 		"fastify-type-provider-zod": "^1.2.0",
 		"fastify-zod": "^1.4.0",
 		"ts-node-dev": "^2.0.0",
-		"zod": "^3.23.8"
+		"zod": "^3.23.8",
+		"zod-validation-error": "^3.3.0"
 	}
 }

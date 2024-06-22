@@ -2,19 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerUserHandler = void 0;
 const user_service_1 = require("../services/user.service");
-async function registerUserHandler(request, reply) {
-    const body = request.body;
-    console.log(body);
+const error_1 = require("../error/error");
+async function registerUserHandler(req, reply) {
     try {
-        console.log("prova");
-        const user = await (0, user_service_1.createUser)(body);
-        console.log("prova2");
-        //return reply.code(201).send(user);
-        return user;
+        const user = req.body;
+        const newUser = await (0, user_service_1.createUser)(user);
+        return { data: newUser };
     }
-    catch (e) {
-        console.log("errore", e);
-        return reply.code(500).send(e);
+    catch (error) {
+        if (error instanceof error_1.DuplicateEntryError) {
+            reply.code(409).send({ error: "Email already exists" });
+        }
+        else {
+            reply.code(500).send({ error: "Internal Server Error" });
+        }
     }
 }
 exports.registerUserHandler = registerUserHandler;
