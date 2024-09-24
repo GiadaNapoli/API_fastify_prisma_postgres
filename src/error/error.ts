@@ -6,8 +6,8 @@ export class DuplicateEntryError extends DomainError {
 	}
 }
 
-export class InvalidEntryError extends DomainError {
-	constructor(message = "INVALID") {
+export class NotFoundError extends DomainError {
+	constructor(message = "NOT_FOUND") {
 		super(message);
 	}
 }
