@@ -23,6 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+<<<<<<< HEAD
+=======
+// src/__tests__/example.test.ts
+>>>>>>> d62d64bb5a790376fb9ffb65392299525c4b268b
 const userService = __importStar(require("../services/user.service"));
 const server_1 = require("../server");
 const error_1 = require("../error/error");
